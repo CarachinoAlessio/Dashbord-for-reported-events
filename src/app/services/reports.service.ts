@@ -83,21 +83,17 @@ export class ReportsService {
       }
     }
 
-    getAllCoords(): Gpx[]{
-        let allCoords = new Array<Gpx>();
-        this.feedbackUtenti.forEach(
-            (feedback) => allCoords.push(feedback.gpx)
-        );
 
-        return allCoords;
-    }
-
-    getToInitialize() {
+    getToInitialize(gravityFilter: string[], reportCategoryFilter: string[]) {
       let toInitialize = new Array<ToInitialize>();
       let todaySt = 'Mon Nov 09 2020 19:32:31 GMT+0100';
       let today = new Date(todaySt).getTime();
       this.feedbackUtenti.forEach(
           (feedback) => {
+              let ignoreGravity: boolean;
+              let ignoreCategory: boolean;
+              let gravityOK: boolean;
+              let categoryOK: boolean;
               let categories = feedback.evento.categorias;
               let gravita = 1;
               categories.forEach(
@@ -122,7 +118,44 @@ export class ReportsService {
               let diff = (today - new Date(feedback.dataSegnalazione).getTime());
               let diffDays = Math.ceil(diff / (1000 * 3600 * 24)) - 1;
               let record: ToInitialize = new ToInitialize(feedback.gpx, diffDays, gravita);
-              toInitialize.push(record);
+
+             //FILTRO ---------------------------------------------------------------------------------
+              ignoreGravity = gravityFilter[0] === 'tutte';
+              ignoreCategory = reportCategoryFilter[0] === 'tutte';
+             //FILTRO GRAVITA' ----------------------------------------------------------
+              gravityOK = false;
+              let gravitaString: string;
+              switch (gravita){
+                  case 1:
+                      gravitaString = 'leggera';
+                      break;
+                  case 2:
+                      gravitaString = 'media';
+                      break;
+                  case 3:
+                      gravitaString = 'grave';
+              }
+              if ( gravityFilter.includes(gravitaString) ){
+                  gravityOK = true;
+              }
+
+
+             //FILTRO GRAVITA' ----------------------------------------------------------
+              categoryOK = false;
+              categories.forEach(
+                  (categoria) => {
+                      if (reportCategoryFilter.includes(categoria.nome)){
+                          categoryOK = true;
+                      }
+                  }
+              );
+
+
+
+
+              if ( (ignoreGravity || gravityOK) && (ignoreCategory || categoryOK)){
+                  toInitialize.push(record);
+              }
           }
       )
         return toInitialize;
