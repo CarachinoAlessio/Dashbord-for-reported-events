@@ -1,0 +1,54 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div style="padding-bottom: 15px;"></div>
+        <mat-card>
+            <div class="row">
+                <div class="col-md-3">
+                    <mat-card style="height: calc(80vh - 45px);">
+                        <mat-card-header>
+                            <mat-card-title>Filtra per...</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <form>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Gravità</mat-label>
+                                    <mat-select [formControl]="gravityControl" multiple>
+                                        <mat-option value="tutte">Tutte</mat-option>
+                                        <mat-option value="leggera">Leggera</mat-option>
+                                        <mat-option value="media">Media</mat-option>
+                                        <mat-option value="grave">Grave</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Tipo di Segnalazione</mat-label>
+                                    <mat-select [formControl]="categoryControl" multiple>
+                                        <mat-option value="tutte">Tutte</mat-option>
+                                        <mat-option *ngFor="let categoria of categories" [value]="categoria">{{categoria}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </form>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <div class="row">
+                                <div class="col-md-6 d-flex justify-content-center">
+                                    <button mat-fab color="primary" (click)="localPosition()">
+                                        <mat-icon>location_searching</mat-icon>
+                                    </button>
+                                </div>
+                                <div class="col-md-6 d-flex justify-content-center">
+                                    <button mat-fab color="primary" (click)="this.updateMap();">
+                                        <mat-icon>check</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </mat-card-actions>
+
+                    </mat-card>
+                </div>
+                <div id="map" class="map col-md-9"></div>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+

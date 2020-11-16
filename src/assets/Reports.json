@@ -1,0 +1,393 @@
+[
+    {
+        "idsegnalazione": "40280381756ed36a01756ed40d610002",
+        "dataSegnalazione": "2020-11-03 11:49:52.0",
+        "gpx": {
+            "idgpx": "40280381756ed36a01756ed40d3c0000",
+            "lat": 41.927449,
+            "longt": 12.474272
+        },
+        "evento": {
+            "idevento": "40280381755b07e101755b0cd7610000",
+            "titolo": "Green City",
+            "descrizione": null,
+            "data_attivazione": null,
+            "categorias": [
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg12",
+                    "nome": "Evento Atmosferico"
+                },
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg24",
+                    "nome": "Segnalazione Città"
+                },
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg29",
+                    "nome": "Segnalazione Ambiente"
+                }
+            ],
+            "immagineUrl": null,
+            "request_login": 0
+        },
+        "iduser": null,
+        "immagini": [],
+        "descrizioni": null,
+        "zona": {
+            "idzona": null,
+            "nome": null,
+            "descrizione": null
+        }
+    },
+    {
+        "idsegnalazione": "40280381756ed36a01756ed40d6e0003",
+        "dataSegnalazione": "2020-10-28 11:49:52.0",
+        "gpx": {
+            "idgpx": "40280381756ed36a01756ed40d3c0001",
+            "lat": 45.062513,
+            "longt": 7.655018
+        },
+        "evento": {
+            "idevento": "40280381755b07e101755b0cd7610000",
+            "titolo": "Green City",
+            "descrizione": null,
+            "data_attivazione": null,
+            "categorias": [
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg12",
+                    "nome": "Evento Atmosferico"
+                },
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg24",
+                    "nome": "Segnalazione Città"
+                },
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg29",
+                    "nome": "Segnalazione Ambiente"
+                }
+            ],
+            "immagineUrl": null,
+            "request_login": 0
+        },
+        "iduser": null,
+        "immagini": [],
+        "descrizioni": null,
+        "zona": {
+            "idzona": null,
+            "nome": null,
+            "descrizione": null
+        }
+    },
+    {
+        "idsegnalazione": "40280381756ed36a01756ed564b80005",
+        "dataSegnalazione": "2020-10-28 11:51:20.0",
+        "gpx": {
+            "idgpx": "40280381756ed36a01756ed5649e0004",
+            "lat": 44.652126,
+            "longt": 10.932718
+        },
+        "evento": {
+            "idevento": "40280381755b07e101755b0cd7610000",
+            "titolo": "Green City",
+            "descrizione": null,
+            "data_attivazione": null,
+            "categorias": [
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg29",
+                    "nome": "Segnalazione Ambiente"
+                }
+            ],
+            "immagineUrl": null,
+            "request_login": 0
+        },
+        "iduser": null,
+        "immagini": [],
+        "descrizioni": null,
+        "zona": {
+            "idzona": null,
+            "nome": null,
+            "descrizione": null
+        }
+    },
+    {
+        "idsegnalazione": "40280381756ed36a01756ed5ece20007",
+        "dataSegnalazione": "2020-11-03 11:51:55.0",
+        "gpx": {
+            "idgpx": "40280381756ed36a01756ed5ecca0006",
+            "lat": 40.353751,
+            "longt": 18.174022
+        },
+        "evento": {
+            "idevento": "40280381755b07e101755b0cd7610000",
+            "titolo": "Green City",
+            "descrizione": null,
+            "data_attivazione": null,
+            "categorias": [
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg24",
+                    "nome": "Segnalazione Città"
+                },
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg29",
+                    "nome": "Segnalazione Ambiente"
+                }
+            ],
+            "immagineUrl": null,
+            "request_login": 0
+        },
+        "iduser": null,
+        "immagini": [
+            null
+        ],
+        "descrizioni": null,
+        "zona": {
+            "idzona": null,
+            "nome": null,
+            "descrizione": null
+        }
+    },
+    {
+        "idsegnalazione": "402803817570143401757014519c0000",
+        "dataSegnalazione": "2020-11-01 17:39:41.0",
+        "gpx": {
+            "idgpx": null,
+            "lat": 40.174336,
+            "longt": 18.168777
+        },
+        "evento": {
+            "idevento": "40280381755b07e101755b0cd7610000",
+            "titolo": "Green City",
+            "descrizione": null,
+            "data_attivazione": null,
+            "categorias": [
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg12",
+                    "nome": "Evento Atmosferico"
+                },
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg24",
+                    "nome": "Segnalazione Città"
+                },
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg29",
+                    "nome": "Segnalazione Ambiente"
+                }
+            ],
+            "immagineUrl": null,
+            "request_login": 0
+        },
+        "iduser": null,
+        "immagini": [],
+        "descrizioni": null,
+        "zona": {
+            "idzona": "4",
+            "nome": "Ingresso",
+            "descrizione": "Test"
+        }
+    },
+    {
+        "idsegnalazione": "40280381758988a10175898beed20000",
+        "dataSegnalazione": "2020-11-02 16:20:51.0",
+        "gpx": {
+            "idgpx": null,
+            "lat": 44.798269,
+            "longt": 10.333252
+        },
+        "evento": {
+            "idevento": "40280381755b07e101755b0cd7610000",
+            "titolo": "Green City",
+            "descrizione": null,
+            "data_attivazione": null,
+            "categorias": [
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg24",
+                    "nome": "Segnalazione Città"
+                },
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg29",
+                    "nome": "Segnalazione Ambiente"
+                }
+            ],
+            "immagineUrl": null,
+            "request_login": 0
+        },
+        "iduser": null,
+        "immagini": [],
+        "descrizioni": null,
+        "zona": {
+            "idzona": "3",
+            "nome": "CNR",
+            "descrizione": "Test"
+        }
+    },
+    {
+        "idsegnalazione": "40280381758988a10175898d22bf0001",
+        "dataSegnalazione": "2020-11-05 16:22:09.0",
+        "gpx": {
+            "idgpx": null,
+            "lat": 38.139630,
+            "longt": 13.345798
+        },
+        "evento": {
+            "idevento": "40280381755b07e101755b0cd7610000",
+            "titolo": "Green City",
+            "descrizione": null,
+            "data_attivazione": null,
+            "categorias": [
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg29",
+                    "nome": "Segnalazione Ambiente"
+                }
+            ],
+            "immagineUrl": null,
+            "request_login": 0
+        },
+        "iduser": null,
+        "immagini": [],
+        "descrizioni": null,
+        "zona": {
+            "idzona": "3",
+            "nome": "CNR",
+            "descrizione": "Test"
+        }
+    },
+    {
+        "idsegnalazione": "40280381758988a10175898e52e60002",
+        "dataSegnalazione": "2020-11-09 16:23:27.0",
+        "gpx": {
+            "idgpx": null,
+            "lat": 39.229008,
+            "longt": 9.119967
+        },
+        "evento": {
+            "idevento": "40280381755b07e101755b0cd7610000",
+            "titolo": "Green City",
+            "descrizione": null,
+            "data_attivazione": null,
+            "categorias": [
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg12",
+                    "nome": "Evento Atmosferico"
+                },
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg24",
+                    "nome": "Segnalazione Città"
+                },
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg29",
+                    "nome": "Segnalazione Ambiente"
+                }
+            ],
+            "immagineUrl": null,
+            "request_login": 0
+        },
+        "iduser": null,
+        "immagini": [],
+        "descrizioni": null,
+        "zona": {
+            "idzona": "4",
+            "nome": "Ingresso",
+            "descrizione": "Test"
+        }
+    },
+    {
+        "idsegnalazione": "4028038175898f3d0175898fe0d00000",
+        "dataSegnalazione": "2020-11-08 16:25:09.0",
+        "gpx": {
+            "idgpx": null,
+            "lat": 39.340183,
+            "longt": 16.448012
+        },
+        "evento": {
+            "idevento": "40280381755b07e101755b0cd7610000",
+            "titolo": "Green City",
+            "descrizione": null,
+            "data_attivazione": null,
+            "categorias": [
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg24",
+                    "nome": "Segnalazione Città"
+                },
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg29",
+                    "nome": "Segnalazione Ambiente"
+                }
+            ],
+            "immagineUrl": null,
+            "request_login": 0
+        },
+        "iduser": null,
+        "immagini": [
+            null
+        ],
+        "descrizioni": null,
+        "zona": {
+            "idzona": "4",
+            "nome": "Ingresso",
+            "descrizione": "Test"
+        }
+    },
+    {
+        "idsegnalazione": "40280381758994b701758995e4270002",
+        "dataSegnalazione": "2020-11-07 16:31:43.0",
+        "gpx": {
+            "idgpx": null,
+            "lat": 38.109034,
+            "longt": 15.643760
+        },
+        "evento": {
+            "idevento": "40280381755b07e101755b0cd7610000",
+            "titolo": "Green City",
+            "descrizione": null,
+            "data_attivazione": null,
+            "categorias": [
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg29",
+                    "nome": "Segnalazione Ambiente"
+                }
+            ],
+            "immagineUrl": null,
+            "request_login": 0
+        },
+        "iduser": null,
+        "immagini": [
+            "https://storage.googleapis.com/safecity-eed9a.appspot.com/SafeCity/Immagini/Segnalazioni/41208717-8f7c-47cc-acb5-0e0959179bebblob?GoogleAccessId=firebase-adminsdk-xgplv@safecity-eed9a.iam.gserviceaccount.com&Expires=1604332221&Signature=Ucb7t3mJM0J7qZjLmmZafnpk44QjK92%2F9xnPQB0eqoy4SCM6XHmBq3H8dR7U2rzzG5v0J6nSTJn2pFW5%2BBcVfO5AHPsay7FLt%2FEMhteZ9RQNgoKWApa8BOFSiIS6Jkd%2F5UhkM3xFvlNQ0qqN8I72kitJY2AbgAyNCYkap20SU%2B9arpz9wc6aeffKaf6iG3QW7VLJfKKVQzXFp6D8C6co9VxXFUmZE2LdjnFpWpwoqWxi0I9OMBTuglnMIzAuUDhz%2BzjLtB%2BZMwhOzTICDJUihr3eNWDQPR6Edxzr90kEraUAuaeBYRRifXy27ic7OtwArtcO59BD5XEGUHjHlE%2BAFA%3D%3D"
+        ],
+        "descrizioni": null,
+        "zona": {
+            "idzona": "1",
+            "nome": "Facoltà di Ingegneria",
+            "descrizione": "Test"
+        }
+    },
+    {
+        "idsegnalazione": "40280381756ed36a01756ed40d610002",
+        "dataSegnalazione": "2020-11-09 11:49:52.0",
+        "gpx": {
+            "idgpx": "40280381756ed36a01756ed40d3c0000",
+            "lat": 43.783953,
+            "longt": 11.254417
+        },
+        "evento": {
+            "idevento": "40280381755b07e101755b0cd7610000",
+            "titolo": "Green City",
+            "descrizione": null,
+            "data_attivazione": null,
+            "categorias": [
+                {
+                    "idcategoria": "qdbsnxj8274hgncksmcnh627djcnfg24",
+                    "nome": "Segnalazione Città"
+                }
+            ],
+            "immagineUrl": null,
+            "request_login": 0
+        },
+        "iduser": null,
+        "immagini": [],
+        "descrizioni": null,
+        "zona": {
+            "idzona": null,
+            "nome": null,
+            "descrizione": null
+        }
+    }
+]

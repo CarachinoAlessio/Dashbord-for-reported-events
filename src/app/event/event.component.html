@@ -1,0 +1,19 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <form class="navbar-form" style="padding-top: 25px; padding-left: 20px; padding-right: 20px;">
+            <div class="input-group">
+                <input type="text" value="" class="form-control" placeholder="Cerca evento...">
+                <button mat-raised-button type="submit" (click)="onSubmit()" class="btn btn-white btn-round btn-just-icon">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
+        </form>
+        <mat-tab-group color="primary">
+            <mat-tab label="Risultati">
+                <div *ngIf="isResultVoid">Devi cercare un evento</div>
+                <div *ngIf="!isResultVoid">Qui vedrai i risultati</div>
+            </mat-tab>
+            <mat-tab [disabled]="isResultVoid" label="Dettagli"></mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

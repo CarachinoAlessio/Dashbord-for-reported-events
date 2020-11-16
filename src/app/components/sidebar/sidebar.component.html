@@ -1,0 +1,18 @@
+<div class="logo" style="background-color: #592465; height: 100px;">
+    <a class="simple-text" style="color: white; padding-top: 15px;">
+        <div class="logo-img">
+            <!--<img src="/assets/img/angular2-logo-red.png"/>-->
+        </div>
+        <b style="font-size: 36px">Tesi</b>
+    </a>
+</div>
+<div class="sidebar-wrapper"  style="background-color: #43184e">
+    <ul class="nav">
+        <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+        <a class="nav-link" [routerLink]="[menuItem.path]" style="color: white;">
+                <i class="material-icons">{{menuItem.icon}}</i>
+            <p><b>{{menuItem.title}}</b></p>
+            </a>
+        </li>
+    </ul>
+</div>
