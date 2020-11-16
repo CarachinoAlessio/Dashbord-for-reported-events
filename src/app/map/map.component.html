@@ -12,18 +12,18 @@
                             <form>
                                 <mat-form-field appearance="fill">
                                     <mat-label>Gravità</mat-label>
-                                    <mat-select [formControl]="gravityControl" multiple>
-                                        <mat-option value="tutte">Tutte</mat-option>
-                                        <mat-option value="leggera">Leggera</mat-option>
-                                        <mat-option value="media">Media</mat-option>
-                                        <mat-option value="grave">Grave</mat-option>
+                                    <mat-select #gravitySelect [formControl]="gravityControl" multiple>
+                                        <mat-option (click)="toggleGravityAllSelection()" value="tutte">Tutte</mat-option>
+                                        <mat-option (onSelectionChange)="gravitySelChanged($event)" value="leggera">Leggera</mat-option>
+                                        <mat-option (onSelectionChange)="gravitySelChanged($event)" value="media">Media</mat-option>
+                                        <mat-option (onSelectionChange)="gravitySelChanged($event)" value="grave">Grave</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                                 <mat-form-field appearance="fill">
                                     <mat-label>Tipo di Segnalazione</mat-label>
-                                    <mat-select [formControl]="categoryControl" multiple>
-                                        <mat-option value="tutte">Tutte</mat-option>
-                                        <mat-option *ngFor="let categoria of categories" [value]="categoria">{{categoria}}</mat-option>
+                                    <mat-select #categorySelect [formControl]="categoryControl" multiple>
+                                        <mat-option (click)="toggleCategoryAllSelection()" value="tutte">Tutte</mat-option>
+                                        <mat-option (onSelectionChange)="categorySelChanged($event)" *ngFor="let categoria of categories" [value]="categoria">{{categoria}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </form>
