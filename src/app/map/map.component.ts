@@ -4,23 +4,34 @@ import Map from 'ol/Map';
 import Tile from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import View from 'ol/View';
-import {fromLonLat} from 'ol/proj.js';
 import Geolocation from "ol/Geolocation";
 import Feature from "ol/Feature";
 import Point from "ol/geom/Point";
 import Icon from "ol/style/Icon";
 import Style from "ol/style/Style";
-import Text from "ol/style/Text";
-import Fill from "ol/style/Fill";
-import Stroke from "ol/style/Stroke";
-
 import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
-import {Gpx} from "../classes/FeedbackUtenti/Gpx";
 import {ToInitialize} from "../classes/ToInitialize";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {MatSelect} from "@angular/material/select";
 import {MatOption, MatOptionSelectionChange} from "@angular/material/core";
+import {Overlay} from "ol";
+import {toStringHDMS} from "ol/coordinate";
+import {toLonLat, fromLonLat} from "ol/proj";
+import {FeedbackUtenti} from "../classes/FeedbackUtenti/FeedbackUtenti";
+
+
+function getDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+    let raggioDellaTerra = 6371000;
+    let dLat = (lat2 - lat1) * Math.PI / 180;
+    let dLon = (lon2 - lon1) * Math.PI / 180;
+    lat1 = lat1 * Math.PI / 180;
+    lat2 = lat2 * Math.PI / 180;
+    let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return raggioDellaTerra * c; //risultato in metri
+}
 
 
 @Component({
@@ -32,7 +43,7 @@ import {MatOption, MatOptionSelectionChange} from "@angular/material/core";
 
 export class MapComponent implements OnInit {
 
-   //MAPPA ---------------------------------------------------------------------------
+    //MAPPA ---------------------------------------------------------------------------
     private map: Map;
     private geolocation: Geolocation;
     private vectorSource: VectorSource;
@@ -40,7 +51,7 @@ export class MapComponent implements OnInit {
     private toInitialize: ToInitialize[];
     private isMapInitialized = false;
 
-   //FORM ----------------------------------------------------------------------------
+    //FORM ----------------------------------------------------------------------------
     allGravitySelected = true;
     allCategorySelected = true;
     options: FormGroup;
@@ -71,10 +82,24 @@ export class MapComponent implements OnInit {
         });
     }
 
-  //MAPPA ---------------------------------------------------------------------------
+
+    //MAPPA ---------------------------------------------------------------------------
+
 
     initializeMap(gravity: string[], reportCategory: string[]) {
         this.toInitialize = this.reportsService.getToInitialize(gravity, reportCategory);
+        const container = document.getElementById('popup');
+        const content = document.getElementById('popup-content');
+        const closer = document.getElementById('popup-closer');
+
+
+        const overlay = new Overlay({
+            element: container,
+            autoPan: true,
+            autoPanAnimation: {
+                duration: 250
+            }
+        });
         this.vectorSource = new VectorSource({
             features: []
         });
@@ -138,12 +163,42 @@ export class MapComponent implements OnInit {
                     source: new OSM()
                 }), this.vectorLayer
             ],
+            overlays: [overlay],
             view: new View({
                 center: fromLonLat([12.496366, 41.902782]),
                 zoom: 6,
                 constrainResolution: true
             })
         });
+
+        // Evento per il pop-up
+        this.map.on('singleclick', e => this.mapClicked(e, content, overlay, this.toInitialize));
+
+
+        closer.onclick = function () {
+            overlay.setPosition(undefined);
+            closer.blur();
+            return false;
+        };
+    }
+
+    private mapClicked(e: any, content: HTMLElement, overlay: Overlay, toInitialize: ToInitialize[]): void {
+        const coordinate = e.coordinate;
+        let segnalazione: FeedbackUtenti = this.reportsService.eventoPiuVicinoDaCoords(toLonLat(coordinate));
+        if (segnalazione != null) {
+            toInitialize.forEach(
+                toInitializeElem => {
+                    if (toInitializeElem.idsegnalazione === segnalazione.idsegnalazione){
+                        if (getDistance(segnalazione.gpx.lat, segnalazione.gpx.longt, toLonLat(coordinate)[1], toLonLat(coordinate)[0]) < 25000) {
+                            content.innerHTML = '<p>Evento selezionato: </p><code>' + segnalazione.evento.titolo +
+                                '</code>';
+                            overlay.setPosition(fromLonLat([segnalazione.gpx.longt, segnalazione.gpx.lat]));
+                        }
+                    }
+                }
+            )
+
+        }
     }
 
 
@@ -160,7 +215,7 @@ export class MapComponent implements OnInit {
         this.map.getView().setCenter(fromLonLat(center));
     }
 
-
+    //Sarebbe 'onSubmit()' del Form
     updateMap(): void {
         let gravity = this.gravityControl.value;
         let reportCategory = this.categoryControl.value;
@@ -174,7 +229,8 @@ export class MapComponent implements OnInit {
 
 
 
-  //FORM ----------------------------------------------------------------------------
+
+    //FORM ----------------------------------------------------------------------------
 
     toggleGravityAllSelection(): void {
         this.allGravitySelected = !this.allGravitySelected;
@@ -251,4 +307,6 @@ export class MapComponent implements OnInit {
             }
         }
     }
+
+
 }

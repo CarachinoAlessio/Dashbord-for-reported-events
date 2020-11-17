@@ -79,7 +79,8 @@
   }
 
   &.btn-round {
-    border-radius: $border-radius-extreme;
+    //border-radius: $border-radius-extreme;
+    border-radius: 60px;
 
     > .mat-button-focus-overlay, .mat-button-ripple{
       border-radius: $border-radius-extreme;
@@ -149,7 +150,8 @@
 
 .btn-just-icon{
     &.btn-lg{
-        font-size: $mdb-btn-fab-font-size;
+        //font-size: $mdb-btn-fab-font-size;
+        font-size: 40px;
         height: $mdb-btn-fab-size;
         min-width: $mdb-btn-fab-size;
         width: $mdb-btn-fab-size;

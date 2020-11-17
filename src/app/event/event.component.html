@@ -2,9 +2,12 @@
     <div class="container-fluid">
         <form class="navbar-form" style="padding-top: 25px; padding-left: 20px; padding-right: 20px;">
             <div class="input-group">
-                <input type="text" value="" class="form-control" placeholder="Cerca evento...">
+                <mat-form-field appearance="fill" style="width: 97%">
+                    <mat-label>Cerca</mat-label>
+                    <input matInput>
+                </mat-form-field>
                 <button mat-raised-button type="submit" (click)="onSubmit()" class="btn btn-white btn-round btn-just-icon">
-                    <i class="material-icons">search</i>
+                    <i class="material-icons" style="font-size: 60px;">search</i>
                 </button>
             </div>
         </form>

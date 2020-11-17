@@ -13,17 +13,27 @@
                                 <mat-form-field appearance="fill">
                                     <mat-label>Gravità</mat-label>
                                     <mat-select #gravitySelect [formControl]="gravityControl" multiple>
-                                        <mat-option (click)="toggleGravityAllSelection()" value="tutte">Tutte</mat-option>
-                                        <mat-option (onSelectionChange)="gravitySelChanged($event)" value="leggera">Leggera</mat-option>
-                                        <mat-option (onSelectionChange)="gravitySelChanged($event)" value="media">Media</mat-option>
-                                        <mat-option (onSelectionChange)="gravitySelChanged($event)" value="grave">Grave</mat-option>
+                                        <mat-option (click)="toggleGravityAllSelection()" value="tutte">Tutte
+                                        </mat-option>
+                                        <mat-option (onSelectionChange)="gravitySelChanged($event)" value="leggera">
+                                            Leggera
+                                        </mat-option>
+                                        <mat-option (onSelectionChange)="gravitySelChanged($event)" value="media">
+                                            Media
+                                        </mat-option>
+                                        <mat-option (onSelectionChange)="gravitySelChanged($event)" value="grave">
+                                            Grave
+                                        </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                                 <mat-form-field appearance="fill">
                                     <mat-label>Tipo di Segnalazione</mat-label>
                                     <mat-select #categorySelect [formControl]="categoryControl" multiple>
-                                        <mat-option (click)="toggleCategoryAllSelection()" value="tutte">Tutte</mat-option>
-                                        <mat-option (onSelectionChange)="categorySelChanged($event)" *ngFor="let categoria of categories" [value]="categoria">{{categoria}}</mat-option>
+                                        <mat-option (click)="toggleCategoryAllSelection()" value="tutte">Tutte
+                                        </mat-option>
+                                        <mat-option (onSelectionChange)="categorySelChanged($event)"
+                                                    *ngFor="let categoria of categories"
+                                                    [value]="categoria">{{categoria}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </form>
@@ -46,6 +56,10 @@
                     </mat-card>
                 </div>
                 <div id="map" class="map col-md-9"></div>
+                <div id="popup" class="ol-popup">
+                    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                    <div id="popup-content"></div>
+                </div>
             </div>
         </mat-card>
     </div>
