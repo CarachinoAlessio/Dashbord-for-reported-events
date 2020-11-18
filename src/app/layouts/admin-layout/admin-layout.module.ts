@@ -15,6 +15,9 @@ import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {EventComponent} from "../../event/event.component";
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
     imports: [
@@ -22,15 +25,18 @@ import {MatTabsModule} from "@angular/material/tabs";
         RouterModule.forChild(AdminLayoutRoutes),
         FormsModule,
         ReactiveFormsModule,
-        MatButtonModule,
         MatRippleModule,
-        MatFormFieldModule,
         MatInputModule,
         MatSelectModule,
         MatTooltipModule,
-        MatCardModule,
-        MatIconModule,
         MatTabsModule,
+        MatProgressBarModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
     ],
     declarations: [
         DashboardComponent,

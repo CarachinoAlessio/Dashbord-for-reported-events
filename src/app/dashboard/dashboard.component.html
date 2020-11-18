@@ -1,63 +1,164 @@
 <div class="main-content">
     <div class="container-fluid">
-        <div class="row">
+
+<!--        RIGA DEL PANNELLO ESTENDIBILE      -->
+        <div class="row" style="margin-bottom: 20px; margin-top: 20px;">
             <div class="col-md-12">
-                <div class="card card-chart">
-                    <div class="card-header card-header-success">
-                        <div class="ct-chart" id="segnalazioniSettimana"></div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Segnalazioni durante la settimana</h4>
-                        <p *ngIf="variazione.incremento" class="card-category">
-                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> {{variazione.valore}} </span>
-                            incremento in segnalazioni giornaliere.</p>
-                        <p *ngIf="!variazione.incremento" class="card-danger">
-                            <span class="text-danger"><i class="fa fa-long-arrow-down"></i> {{variazione.valore}} </span>
-                            decremento in segnalazioni giornaliere.</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> {{variazione.ultimoAggiornamento}}
-                        </div>
-                    </div>
-                </div>
+                <mat-card-header>
+                    <mat-card-title>
+                        <button mat-button (click)="accordion.openAll()" style="font-size: 18px;"><b>Espandi tutto</b></button>
+                    </mat-card-title>
+
+                </mat-card-header>
+                    <mat-card-content>
+                        <mat-accordion class="headers-align" multi>
+                            <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                                                 (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Ultima settimana
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Grafico rappresentativo delle segnalazioni più recenti
+                                        <mat-icon>new_releases</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <!--        RIGA DEL PRIMO GRAFICO ESTENDIBILE      -->
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-chart">
+                                            <div class="card-header card-header-success">
+                                                <div class="ct-chart" id="segnalazioniSettimana"></div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h4 class="card-title">Segnalazioni durante la settimana</h4>
+                                                <p *ngIf="variazione.incremento" class="card-category">
+                                <span class="text-success"><i
+                                        class="fa fa-long-arrow-up"></i> {{variazione.valore}} </span>
+                                                    incremento in segnalazioni giornaliere.</p>
+                                                <p *ngIf="!variazione.incremento" class="card-danger">
+                                <span class="text-danger"><i
+                                        class="fa fa-long-arrow-down"></i> {{variazione.valore}} </span>
+                                                    decremento in segnalazioni giornaliere.</p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="stats">
+                                                    <i class="material-icons">access_time</i> {{variazione.ultimoAggiornamento}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <mat-card-actions>
+                                    <button mat-button (click)="accordion.closeAll()" style="font-size: 18px;"><b>Contrai tutto</b></button>
+                                </mat-card-actions>
+
+                                <!--        FINE RIGA DEL PRIMO GRAFICO ESTENDIBILE -->
+
+                            </mat-expansion-panel>
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                 (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Informazione utenti
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Grafico rappresentativo del numero di segnalazioni anonime
+                                        <mat-icon>face</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-chart">
+                                            <div class="card-header card-header-success">
+                                                <div class="ct-chart" id="usersInfo"></div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h4 class="card-title">Segnalazioni in base ai tipi di utenti</h4>
+                                                <p class="card-category">
+                                                <span style="color: orangered;">R</span>
+                                                <span>: Utenti anonimi</span>
+                                                    <br>
+                                                    <span style="color: black;">W: </span>
+                                                    <span>Utenti registrati</span>
+
+                                                </p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="stats">
+                                                    <i class="material-icons">access_time</i> {{variazione.ultimoAggiornamento}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <mat-card-actions>
+                                    <button mat-button (click)="accordion.closeAll()" style="font-size: 18px;"><b>Contrai tutto</b></button>
+                                </mat-card-actions>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                 (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        TODO
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        TODO
+                                        <mat-icon>bookmark_border</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <p> TODO: </p>
+                                <mat-card-actions>
+                                    <button mat-button (click)="accordion.closeAll()" style="font-size: 18px;"><b>Contrai tutto</b></button>
+                                </mat-card-actions>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel (opened)="panelOpenState = true"
+                                                 (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        TODO
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        TODO
+                                        <mat-icon>payment</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <p> TODO.</p>
+                                <mat-card-actions>
+                                    <button mat-button (click)="accordion.closeAll()" style="font-size: 18px;"><b>Contrai tutto</b></button>
+                                </mat-card-actions>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </mat-card-content>
+
             </div>
         </div>
-        <!--<div class="row">
-            <div class="col-md-12">
-                <div class="card card-chart">
-                    <div class="card-header card-header-warning">
-                        <div class="ct-chart" id="websiteViewsChart"></div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Email Subscriptions</h4>
-                        <p class="card-category">Last Campaign Performance</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
+<!--        FINE RIGA DEL PANNELLO ESTENDIBILE -->
+
+        <!--
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-chart">
+                            <div class="card-header card-header-warning">
+                                <div class="ct-chart" id="websiteViewsChart"></div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Email Subscriptions</h4>
+                                <p class="card-category">Last Campaign Performance</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">access_time</i> campaign sent 2 days ago
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-chart">
-                    <div class="card-header card-header-danger">
-                        <div class="ct-chart" id="completedTasksChart"></div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Completed Tasks</h4>
-                        <p class="card-category">Last Campaign Performance</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">access_time</i> campaign sent 2 days ago
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
+
+                -->
     </div>
 </div>
+
