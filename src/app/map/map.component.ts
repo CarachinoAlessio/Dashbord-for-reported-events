@@ -188,7 +188,7 @@ export class MapComponent implements OnInit {
         if (segnalazione != null) {
             toInitialize.forEach(
                 toInitializeElem => {
-                    if (toInitializeElem.idsegnalazione === segnalazione.idsegnalazione){
+                    if (toInitializeElem.idsegnalazione === segnalazione.idsegnalazione) {
                         if (getDistance(segnalazione.gpx.lat, segnalazione.gpx.longt, toLonLat(coordinate)[1], toLonLat(coordinate)[0]) < 25000) {
                             content.innerHTML = '<p>Evento selezionato: </p><code>' + segnalazione.evento.titolo +
                                 '</code>';
@@ -196,8 +196,7 @@ export class MapComponent implements OnInit {
                         }
                     }
                 }
-            )
-
+            );
         }
     }
 
@@ -226,8 +225,6 @@ export class MapComponent implements OnInit {
         }
 
     }
-
-
 
 
     //FORM ----------------------------------------------------------------------------

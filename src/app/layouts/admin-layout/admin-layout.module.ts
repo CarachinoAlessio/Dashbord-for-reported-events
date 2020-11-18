@@ -4,8 +4,6 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AdminLayoutRoutes} from './admin-layout.routing';
 import {DashboardComponent} from '../../dashboard/dashboard.component';
-import {UserProfileComponent} from '../../user-profile/user-profile.component';
-import {TableListComponent} from '../../table-list/table-list.component';
 import {MapComponent} from '../../map/map.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -36,8 +34,6 @@ import {MatTabsModule} from "@angular/material/tabs";
     ],
     declarations: [
         DashboardComponent,
-        UserProfileComponent,
-        TableListComponent,
         MapComponent,
         EventComponent,
     ]
