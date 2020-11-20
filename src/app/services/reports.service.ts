@@ -73,12 +73,10 @@ export class ReportsService {
         this.feedbackUtenti.forEach(
             (feedback) => date.push(feedback.dataSegnalazione.toString().split(' ')[0] ));
         date.sort();
-        console.log(date);
         let j = 1;
         overallBest = 1;
         let mostFrequentDate = date[0];
         for (let i = 0; i < date.length ; i++){
-            console.log(j);
             if (date[i] !== date[i+1]){
                 if (overallBest < j){
                     overallBest = j;
@@ -155,6 +153,17 @@ export class ReportsService {
 
     getTotalReports(): number{
         return this.feedbackUtenti.length;
+    }
+
+    getSerieGiorniSettimana(): number[]{
+        let giorni = [0, 0, 0, 0, 0, 0, 0];
+        this.feedbackUtenti.forEach(
+            (feedback) => {
+                const date = new Date(feedback.dataSegnalazione);
+                giorni[date.getDay()]++;
+            }
+        );
+        return giorni;
     }
 
     //MAPPA ----------------------------------------------------------------------------------------------------------
@@ -280,5 +289,6 @@ export class ReportsService {
 
         return feedbackPiuVicino;
     }
+
 
 }

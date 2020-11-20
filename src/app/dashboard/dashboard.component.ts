@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
     private isServiceReady = false;
     private serie: Array<number> = [];
     @Input() variazione = new Variazione(false, '0.0%', 'aggiornato 0 secondi fa');
+    private giorniSettimanaGrafico: { series: number[][]; labels: string[] };
 
     constructor(private reportsService: ReportsService) {
         this.reportsService.getReports();
@@ -146,20 +147,20 @@ export class DashboardComponent implements OnInit {
 
 
                 // Grafico 3---------------------------------------------------------------------------------
-
-                let mediaGiorniSettimanaGrafico = {
-                    labels: ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'],
-                    series: [ [542, 443, 320, 780, 553, 453, 326] ]
+                let serieGiorniSettimana = this.reportsService.getSerieGiorniSettimana();
+                this.giorniSettimanaGrafico = {
+                    labels: ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 'Domenica'],
+                    series: [ serieGiorniSettimana ]
                 };
-                let OpzioniMediaGiorniSettimanali = {
+                let opzioniGiorniSettimanali = {
                     axisX: {
-                        showGrid: true
+                        showGrid: true,
                     },
                     low: 0,
-                    high: 1000,
+                    high: Math.max(...serieGiorniSettimana) + 5,
                 };
 
-                let websiteViewsChart = new Chartist.Bar('#mediaGiorniSettimanali', mediaGiorniSettimanaGrafico, OpzioniMediaGiorniSettimanali);
+                let websiteViewsChart = new Chartist.Bar('#giorniSettimanali', this.giorniSettimanaGrafico, opzioniGiorniSettimanali);
 
                 this.startAnimationForBarChart(websiteViewsChart);
 
@@ -167,6 +168,17 @@ export class DashboardComponent implements OnInit {
             }
         )
 
+
+    }
+
+    getMostActiveDay(): string{
+        try{
+            let max = Math.max(...this.giorniSettimanaGrafico.series[0]);
+            let index = this.giorniSettimanaGrafico.series[0].indexOf(max);
+            return this.giorniSettimanaGrafico.labels[index];
+        }catch (e){
+            return '';
+        }
 
     }
 
@@ -211,4 +223,5 @@ export class DashboardComponent implements OnInit {
     getTotalReports(): number {
         return this.reportsService.getTotalReports();
     }
+
 }

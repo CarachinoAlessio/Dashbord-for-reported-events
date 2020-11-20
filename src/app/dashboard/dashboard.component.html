@@ -168,7 +168,7 @@
                                              (closed)="panelOpenState = false">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Media giorni settimana
+                                    Segnalazioni durante la settimana
                                 </mat-panel-title>
                                 <mat-panel-description>
                                     Grafico rappresentativo dei giorni settimanali più attivi
@@ -179,15 +179,14 @@
                                 <div class="col-md-12">
                                     <div class="card card-chart">
                                         <div class="card-header card-header-success">
-                                            <div class="ct-chart" id="mediaGiorniSettimanali"></div>
+                                            <div class="ct-chart" id="giorniSettimanali"></div>
                                         </div>
                                         <div class="card-body">
-                                            <h4 class="card-title">Media n. segnalazioni per settimana</h4>
-                                            <p class="card-category">Last Campaign Performance</p>
+                                            <h4 class="card-title">N. segnalazioni per giorni della settimana</h4>
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">
-                                                <i class="material-icons">view_week</i> campaign sent 2 days ago
+                                                <i class="material-icons">view_week</i> Il giorno più attivo è {{this.getMostActiveDay()}}
                                             </div>
                                         </div>
                                     </div>
