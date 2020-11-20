@@ -20,6 +20,7 @@ export class ReportsService {
         return this.serviceReady;
     }
 
+    //DASHBOARD -----------------------------------------------------------------------------------------------------
     getReports(): void {
         this.httpClient.get<any>("assets/Reports.json").subscribe(
             json => {
@@ -84,6 +85,53 @@ export class ReportsService {
     }
 
 
+    getSegnalazioniUtentiSeries(): number[][]{
+        let serieAnonimi: Array<number> = [];
+        let serieRegistrati: Array<number> = [];
+
+        if (this.feedbackUtenti.length == 0) {
+            serieAnonimi[0] = 1; serieRegistrati[0] = 2;
+            serieAnonimi[1] = 1; serieRegistrati[1] = 2;
+            serieAnonimi[2] = 1; serieRegistrati[2] = 2;
+            serieAnonimi[3] = 1; serieRegistrati[3] = 2;
+            serieAnonimi[4] = 1; serieRegistrati[4] = 2;
+            serieAnonimi[5] = 1; serieRegistrati[5] = 2;
+            serieAnonimi[6] = 1; serieRegistrati[6] = 2;
+            return [serieRegistrati, serieAnonimi];
+        } else {
+
+            let dataSegnalazione: string;
+            // non posso cambiare le date ogni giorno nel JSON... let today = new Date().getTime();
+            let todaySt = 'Mon Nov 09 2020 19:32:31 GMT+0100';
+            let today = new Date(todaySt).getTime();
+            serieAnonimi = [0, 0, 0, 0, 0, 0, 0];
+            serieRegistrati = [0, 0, 0, 0, 0, 0, 0];
+            // DEVE partire da 0 MA per mostrare meglio il grafico lo faccio particolare
+            // let countPerDays: number[] = [ 0, 0, 0, 0, 0, 0, 0 ];
+
+            this.feedbackUtenti.forEach(
+                (feedbackUtente) => {
+                    dataSegnalazione = feedbackUtente.dataSegnalazione;
+                    let diff = (today - new Date(dataSegnalazione).getTime());
+                    let diffDays = Math.ceil(diff / (1000 * 3600 * 24)) - 1;
+                    if (diffDays < 7) {
+                        if ( feedbackUtente.iduser == undefined ){
+                            serieAnonimi[6 - diffDays]++;
+                        } else{
+                            serieRegistrati[6 - diffDays]++;
+                        }
+                    }
+                }
+            );
+            return [serieRegistrati, serieAnonimi];
+        }
+    }
+
+    getTotalReports(): number{
+        return this.feedbackUtenti.length;
+    }
+
+    //MAPPA ----------------------------------------------------------------------------------------------------------
     getToInitialize(gravityFilter: string[], reportCategoryFilter: string[]) {
         let toInitialize = new Array<ToInitialize>();
         let todaySt = 'Mon Nov 09 2020 19:32:31 GMT+0100';

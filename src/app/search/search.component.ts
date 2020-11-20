@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-event',
-  templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css']
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class EventComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
   isResultVoid = true;
   constructor() { }

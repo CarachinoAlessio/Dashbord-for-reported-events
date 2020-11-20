@@ -65,7 +65,29 @@ export class DashboardComponent implements OnInit {
 
         seq = 0;
     };
+    startAnimationForBarChart(chart){
+        let seq2: any, delays2: any, durations2: any;
 
+        seq2 = 0;
+        delays2 = 80;
+        durations2 = 500;
+        chart.on('draw', function(data) {
+            if(data.type === 'bar'){
+                seq2++;
+                data.element.animate({
+                    opacity: {
+                        begin: seq2 * delays2,
+                        dur: durations2,
+                        from: 0,
+                        to: 1,
+                        easing: 'ease'
+                    }
+                });
+            }
+        });
+
+        seq2 = 0;
+    };
 
     ngOnInit() {
         this.reportsService.isServiceReady.subscribe(
@@ -97,12 +119,12 @@ export class DashboardComponent implements OnInit {
 
 
                 // Grafico 2---------------------------------------------------------------------------------
+                let utentiSeries = this.reportsService.getSegnalazioniUtentiSeries();
+
+
                 const segnalazioniUtentiChart: any = {
                     labels: this.segnalazioniSettimanaChart.labels,
-                    series: [
-                        [230, 750, 450, 300, 280, 240, 200, 190],
-                        [233, 432, 565, 923, 280, 240, 200, 190]
-                    ]
+                    series: utentiSeries,
                 };
 
 
@@ -111,7 +133,7 @@ export class DashboardComponent implements OnInit {
                         tension: 0
                     }),
                     low: 0,
-                    high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+                    high: Math.max(...utentiSeries[0], ...utentiSeries[1]) + 10,
                     chartPadding: {top: 0, right: 0, bottom: 0, left: 0}
                 }
 
@@ -119,47 +141,24 @@ export class DashboardComponent implements OnInit {
                 this.startAnimationForLineChart(segnalazioniUtentiGrafico);
 
 
-                /*
 
+                // Grafico 3---------------------------------------------------------------------------------
 
+                let mediaGiorniSettimanaGrafico = {
+                    labels: ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'],
+                    series: [ [542, 443, 320, 780, 553, 453, 326] ]
+                };
+                let OpzioniMediaGiorniSettimanali = {
+                    axisX: {
+                        showGrid: true
+                    },
+                    low: 0,
+                    high: 1000,
+                };
 
+                let websiteViewsChart = new Chartist.Bar('#mediaGiorniSettimanali', mediaGiorniSettimanaGrafico, OpzioniMediaGiorniSettimanali);
 
-
-
-
-                              /!* ----------==========     Emails Subscription Chart initialization    ==========---------- *!/
-
-                              var datawebsiteViewsChart = {
-                                  labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-                                  series: [
-                                      [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
-                                  ]
-                              };
-                              var optionswebsiteViewsChart = {
-                                  axisX: {
-                                      showGrid: false
-                                  },
-                                  low: 0,
-                                  high: 1000,
-                                  chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
-                              };
-                              var responsiveOptions: any[] = [
-                                  ['screen and (max-width: 640px)', {
-                                      seriesBarDistance: 5,
-                                      axisX: {
-                                          labelInterpolationFnc: function (value) {
-                                              return value[0];
-                                          }
-                                      }
-                                  }]
-                              ];
-                              var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
-
-                              //start animation for the Emails Subscription Chart
-                              this.startAnimationForBarChart(websiteViewsChart);
-
-                */
+                this.startAnimationForBarChart(websiteViewsChart);
 
 
             }
@@ -197,5 +196,9 @@ export class DashboardComponent implements OnInit {
 
     private getLastUpdateInfo(): string {
         return this.reportsService.getLastUpdateInfo();
+    }
+
+    getTotalReports(): number {
+        return this.reportsService.getTotalReports();
     }
 }
