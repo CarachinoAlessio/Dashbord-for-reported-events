@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
     @ViewChild(MatAccordion) accordion: MatAccordion;
     panelOpenState = false;
     private segnalazioniSettimanaChart: { labels: string[], series: number[][] };
+    private overallBest: { overallBest: number, date: string } = {overallBest: 0, date: ''};
     private isServiceReady = false;
     private serie: Array<number> = [];
     @Input() variazione = new Variazione(false, '0.0%', 'aggiornato 0 secondi fa');
@@ -93,7 +94,9 @@ export class DashboardComponent implements OnInit {
         this.reportsService.isServiceReady.subscribe(
             (b) => {
                 this.isServiceReady = b;
-
+               //Prima riga dell'HTML -------------------------------------------------------------------
+                this.setOverallBest(this.reportsService.getOverallbest());
+                this.overallBest = this.getOverallBest();
                 // per non cambiare le date al JSON ogni giorno, assegno una data.
                 // Leggi nel reports service per più info (dove calcolo la serie numerica)
                 // let today = new Date().getDay();
@@ -165,6 +168,13 @@ export class DashboardComponent implements OnInit {
         )
 
 
+    }
+
+    getOverallBest(): { overallBest: number, date: string }{
+        return this.overallBest;
+    }
+    setOverallBest(overallBest: { overallBest: number, date: string }): void{
+        this.overallBest = overallBest;
     }
 
     isIncrease(): boolean {

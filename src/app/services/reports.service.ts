@@ -66,6 +66,32 @@ export class ReportsService {
         }
     }
 
+
+    getOverallbest(): { overallBest: number, date: string }{
+        let overallBest: number;
+        let date: string[] = [];
+        this.feedbackUtenti.forEach(
+            (feedback) => date.push(feedback.dataSegnalazione.toString().split(' ')[0] ));
+        date.sort();
+        console.log(date);
+        let j = 1;
+        overallBest = 1;
+        let mostFrequentDate = date[0];
+        for (let i = 0; i < date.length ; i++){
+            console.log(j);
+            if (date[i] !== date[i+1]){
+                if (overallBest < j){
+                    overallBest = j;
+                    mostFrequentDate = date[i];
+                }
+                j = 1;
+            }else{
+                j++;
+            }
+        }
+        return { overallBest: overallBest, date: mostFrequentDate};
+    }
+
     getLastUpdateInfo(): string {
         let lastSegnalation = this.feedbackUtenti[this.feedbackUtenti.length - 1].dataSegnalazione;
         // Stesso ragionamento di getSerieSettimana()
@@ -254,4 +280,5 @@ export class ReportsService {
 
         return feedbackPiuVicino;
     }
+
 }
