@@ -15,6 +15,8 @@ import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { DialogComponent } from './search/dialog/dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   imports: [
@@ -31,12 +33,15 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogModule,
   ],
+  entryComponents: [DialogComponent],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    DialogComponent,
   ],
-  providers: [ReportsService, RouteGuardService],
+  providers: [ReportsService, RouteGuardService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

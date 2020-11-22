@@ -116,7 +116,7 @@ export class MapComponent implements OnInit {
                             image: new Icon(({
                                 crossOrigin: 'anonymous',
                                 src: 'assets/greenpin.svg',
-                                imgSize: [25, 25],
+                                imgSize: [22, 22],
                             })),
                         }));
                         break;
@@ -125,7 +125,7 @@ export class MapComponent implements OnInit {
                             image: new Icon(({
                                 crossOrigin: 'anonymous',
                                 src: 'assets/orangepin.svg',
-                                imgSize: [25, 25],
+                                imgSize: [22, 22],
                             })),
                         }));
                         break;
@@ -134,7 +134,7 @@ export class MapComponent implements OnInit {
                             image: new Icon(({
                                 crossOrigin: 'anonymous',
                                 src: 'assets/redpin.svg',
-                                imgSize: [25, 25],
+                                imgSize: [22, 22],
                             })),
                         }));
                         break;
@@ -165,8 +165,8 @@ export class MapComponent implements OnInit {
             ],
             overlays: [overlay],
             view: new View({
-                center: fromLonLat([12.496366, 41.902782]),
-                zoom: 6,
+                center: fromLonLat([18.123439, 40.332929]),
+                zoom: 13,
                 constrainResolution: true
             })
         });
@@ -189,7 +189,7 @@ export class MapComponent implements OnInit {
             toInitialize.forEach(
                 toInitializeElem => {
                     if (toInitializeElem.idsegnalazione === segnalazione.idsegnalazione) {
-                        if (getDistance(segnalazione.gpx.lat, segnalazione.gpx.longt, toLonLat(coordinate)[1], toLonLat(coordinate)[0]) < 25000) {
+                        if (getDistance(segnalazione.gpx.lat, segnalazione.gpx.longt, toLonLat(coordinate)[1], toLonLat(coordinate)[0]) < 75) {
                             content.innerHTML = '<code>' + segnalazione.evento.titolo +
                                 '</code><p>ID: ' + segnalazione.idsegnalazione + '</p>';
                             overlay.setPosition(fromLonLat([segnalazione.gpx.longt, segnalazione.gpx.lat]));

@@ -3,6 +3,7 @@ import {FeedbackUtenti} from "../classes/FeedbackUtenti/FeedbackUtenti";
 import {HttpClient} from "@angular/common/http";
 import {ToInitialize} from "../classes/ToInitialize";
 import {Coordinate} from "ol/coordinate";
+import {RisultatoRicerca} from "../search/search.component";
 
 
 @Injectable({
@@ -299,5 +300,51 @@ export class ReportsService {
             }
         }
         return undefined;
+    }
+
+    /*getAllCities(): string[]{
+        interface City{
+            city: string
+        }
+        class Address{
+            constructor(
+                public address: City,
+            ) {
+            }
+        }
+
+        let cities = new Array<string>();
+        this.feedbackUtenti.forEach(
+            (feedback) => {
+                let city: string;
+                this.httpClient.get('http://nominatim.openstreetmap.org/reverse?format=json&lon=' + feedback.gpx.longt + '&lat=' + feedback.gpx.lat)
+                    .subscribe(
+                        (res: Address) => {
+                            city = res.address.city;
+                            cities.push(city);            console.log(cities.length);
+                        }
+                    );
+            }
+        );
+        if (cities.length === this.feedbackUtenti.length) {
+            cities = cities.filter((item, index) => cities.indexOf(item) === index);
+            return cities.sort();
+        }
+        return [''];
+    }*/
+    getRisultatiRicercaByZone(zone: string, startDate: string, endDate: string): RisultatoRicerca[]{
+        let risultatoRicerca = new Array<RisultatoRicerca>();
+        let i: RisultatoRicerca = {categorie: "", data: "", zona: "", titolo: 'ciao'}
+        risultatoRicerca.push(i);
+        return risultatoRicerca;
+    }
+
+    getZones(): string[]{
+        let res = new Array<string>();
+        this.feedbackUtenti.forEach(
+            (feedback) => res.push(feedback.zona.nome)
+        );
+        res = res.filter((item, index) => res.indexOf(item) === index);
+        return res.sort();
     }
 }

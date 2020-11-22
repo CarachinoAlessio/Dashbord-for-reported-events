@@ -1,38 +1,20 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
+import {MatDialog} from "@angular/material/dialog";
 import {FormControl} from "@angular/forms";
 import {FeedbackUtenti} from "../classes/FeedbackUtenti/FeedbackUtenti";
 import {ReportsService} from "../services/reports.service";
+import {DialogComponent} from "./dialog/dialog.component";
 
-export interface PeriodicElement {
+export interface RisultatoRicerca {
+  idsegnalazione?: string,
   titolo: string;
   data: string;
   categorie: string;
   zona: string;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  {titolo: 'Green City', data: 'Hydrogen', categorie: 'Test', zona: 'H'},
-  {titolo: 'Green City', data: 'Helium',   categorie: 'Test', zona: 'He'},
-  {titolo: 'Green City', data: 'Lithium',  categorie: 'Test', zona: 'Li'},
-  {titolo: 'Green City', data: 'Beryllium',categorie: 'Test', zona: 'Be'},
-  {titolo: 'Green City', data: 'Boron',    categorie: 'Test', zona: 'B'},
-  {titolo: 'Green City', data: 'Carbon',   categorie: 'Test', zona: 'C'},
-  {titolo: 'Green City', data: 'Nitrogen', categorie: 'Test', zona: 'N'},
-  {titolo: 'Green City', data: 'Oxygen',   categorie: 'Test', zona: 'O'},
-  {titolo: 'Green City', data: 'Fluorine', categorie: 'Test', zona: 'F'},
-  {titolo: 'Green City', data: 'Neon',     categorie: 'Test', zona: 'Ne'},
-  {titolo: 'Green City', data: 'Sodium',   categorie: 'Test', zona: 'Na'},
-  {titolo: 'Green City', data: 'Magnesium',categorie: 'Test', zona: 'Mg'},
-  {titolo: 'Green City', data: 'Aluminum', categorie: 'Test', zona: 'Al'},
-  {titolo: 'Green City', data: 'Silicon',  categorie: 'Test', zona: 'Si'},
-  {titolo: 'Green City', data: 'Phophorus',categorie: 'Test', zona: 'P'},
-  {titolo: 'Green City', data: 'Sulfur',   categorie: 'Test', zona: 'S'},
-  {titolo: 'Green City', data: 'Chlorine', categorie: 'Test', zona: 'Cl'},
-  {titolo: 'Green City', data: 'Argon',    categorie: 'Test', zona: 'Ar'},
-  {titolo: 'Green City', data: 'Potassiu', categorie: 'Test', zona: 'K'},
-  {titolo: 'Green City', data: 'Calcium',  categorie: 'Test', zona: 'Ca'},
-];
+const risultatoRicerca: RisultatoRicerca[] = [];
 
 
 @Component({
@@ -42,14 +24,22 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class SearchComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['titolo', 'data', 'categorie', 'zona'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<RisultatoRicerca>(risultatoRicerca);
   hasSearched = false;
   isResultVoid = true;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  selected = new FormControl(0);
+  tabSelected = new FormControl(0);
   idInput = new FormControl('');
+  zoneSelected = new FormControl();
+  startDateControl = new FormControl();
+  endDateControl = new FormControl();
+  risultatiRicerca: RisultatoRicerca[] = [];
+  zone: string[] = [];
 
-  constructor(private reportsService: ReportsService) { }
+
+  constructor(private reportsService: ReportsService, public dialog: MatDialog) {
+    this.zone = this.reportsService.getZones();
+  }
 
   ngOnInit(): void {
   }
@@ -66,16 +56,16 @@ export class SearchComponent implements OnInit, AfterViewInit {
       return;
     }
     const feedback: FeedbackUtenti = this.reportsService.getById(this.idInput.value);
-    if (feedback === undefined){
-
-    }else{
-
-    }
-    this.hasSearched = true;
-    this.isResultVoid = false;
+    this.dialog.open(DialogComponent, {data: feedback});
   }
 
-  searchByCity() {
+  searchByZone(): void{
+    if (this.zoneSelected.value == undefined && this.startDateControl.value == undefined && this.endDateControl.value == undefined){
+      alert('Devi riempire almeno un campo');
+      return;
+    }
+    this.risultatiRicerca = this.reportsService.getRisultatiRicercaByZone(this.zoneSelected.value, this.startDateControl.value, this.endDateControl.value);
+    this.dataSource = new MatTableDataSource<RisultatoRicerca>(this.risultatiRicerca);
     this.hasSearched = true;
     this.isResultVoid = false;
   }

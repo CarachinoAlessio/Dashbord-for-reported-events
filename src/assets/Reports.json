@@ -4,8 +4,8 @@
         "dataSegnalazione": "2020-11-03 11:49:52.0",
         "gpx": {
             "idgpx": "40280381756ed36a01756ed40d3c0000",
-            "lat": 41.927449,
-            "longt": 12.474272
+            "lat": 40.335167,
+            "longt": 18.116291
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
@@ -34,7 +34,7 @@
         "descrizioni": null,
         "zona": {
             "idzona": null,
-            "nome": null,
+            "nome": "Economia",
             "descrizione": null
         }
     },
@@ -43,8 +43,8 @@
         "dataSegnalazione": "2020-10-28 11:49:52.0",
         "gpx": {
             "idgpx": "40280381756ed36a01756ed40d3c0001",
-            "lat": 45.062513,
-            "longt": 7.655018
+            "lat": 40.334864,
+            "longt": 18.113802
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
@@ -73,7 +73,7 @@
         "descrizioni": null,
         "zona": {
             "idzona": null,
-            "nome": null,
+            "nome": "Ingegneria",
             "descrizione": null
         }
     },
@@ -82,8 +82,8 @@
         "dataSegnalazione": "2020-10-28 11:51:20.0",
         "gpx": {
             "idgpx": "40280381756ed36a01756ed5649e0004",
-            "lat": 44.652126,
-            "longt": 10.932718
+            "lat": 40.335478,
+            "longt": 18.111431
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
@@ -104,7 +104,7 @@
         "descrizioni": null,
         "zona": {
             "idzona": null,
-            "nome": null,
+            "nome": "Ingegneria",
             "descrizione": null
         }
     },
@@ -141,7 +141,7 @@
         "descrizioni": null,
         "zona": {
             "idzona": null,
-            "nome": null,
+            "nome": "Giurisprudenza",
             "descrizione": null
         }
     },
@@ -150,8 +150,8 @@
         "dataSegnalazione": "2020-11-01 17:39:41.0",
         "gpx": {
             "idgpx": null,
-            "lat": 40.174336,
-            "longt": 18.168777
+            "lat": 40.334317,
+            "longt": 18.117085
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
@@ -180,7 +180,7 @@
         "descrizioni": null,
         "zona": {
             "idzona": "4",
-            "nome": "Ingresso",
+            "nome": "Mensa Ecotekne",
             "descrizione": "Test"
         }
     },
@@ -189,8 +189,8 @@
         "dataSegnalazione": "2020-11-02 16:20:51.0",
         "gpx": {
             "idgpx": null,
-            "lat": 44.798269,
-            "longt": 10.333252
+            "lat": 40.358236,
+            "longt": 18.166352
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
@@ -214,8 +214,8 @@
         "immagini": [],
         "descrizioni": null,
         "zona": {
-            "idzona": "3",
-            "nome": "CNR",
+            "idzona": null,
+            "nome": "Studium 2000",
             "descrizione": "Test"
         }
     },
@@ -224,8 +224,8 @@
         "dataSegnalazione": "2020-11-05 16:22:09.0",
         "gpx": {
             "idgpx": null,
-            "lat": 38.139630,
-            "longt": 13.345798
+            "lat": 40.349915,
+            "longt": 18.169788
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
@@ -246,7 +246,7 @@
         "descrizioni": null,
         "zona": {
             "idzona": "3",
-            "nome": "CNR",
+            "nome": "Convitto Palmieri",
             "descrizione": "Test"
         }
     },
@@ -255,8 +255,8 @@
         "dataSegnalazione": "2020-11-09 16:23:27.0",
         "gpx": {
             "idgpx": null,
-            "lat": 39.229008,
-            "longt": 9.119967
+            "lat": 40.349605,
+            "longt": 18.167581
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
@@ -285,7 +285,7 @@
         "descrizioni": null,
         "zona": {
             "idzona": "4",
-            "nome": "Ingresso",
+            "nome": "Sede Centrale",
             "descrizione": "Test"
         }
     },
@@ -294,8 +294,8 @@
         "dataSegnalazione": "2020-11-08 16:25:09.0",
         "gpx": {
             "idgpx": null,
-            "lat": 39.340183,
-            "longt": 16.448012
+            "lat": 40.348816,
+            "longt": 18.166572
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
@@ -322,7 +322,7 @@
         "descrizioni": null,
         "zona": {
             "idzona": "4",
-            "nome": "Ingresso",
+            "nome": "Sede Centrale",
             "descrizione": "Test"
         }
     },
@@ -331,8 +331,8 @@
         "dataSegnalazione": "2020-11-07 16:31:43.0",
         "gpx": {
             "idgpx": null,
-            "lat": 38.109034,
-            "longt": 15.643760
+            "lat": 40.332808,
+            "longt": 18.113420
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
@@ -355,7 +355,7 @@
         "descrizioni": null,
         "zona": {
             "idzona": "1",
-            "nome": "Facoltà di Ingegneria",
+            "nome": "Periferia Ecotekne",
             "descrizione": "Test"
         }
     },
@@ -364,8 +364,8 @@
         "dataSegnalazione": "2020-11-09 11:49:52.0",
         "gpx": {
             "idgpx": "40280381756ed36a01756ed40d3c0000",
-            "lat": 43.783953,
-            "longt": 11.254417
+            "lat": 40.335997,
+            "longt": 18.121587
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
@@ -386,7 +386,7 @@
         "descrizioni": null,
         "zona": {
             "idzona": null,
-            "nome": null,
+            "nome": "DHITECH",
             "descrizione": null
         }
     }

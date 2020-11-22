@@ -1,0 +1,26 @@
+<div *ngIf="data !== undefined">
+    <h2 mat-dialog-title>{{data.evento.titolo}}</h2>
+    <mat-dialog-content>
+        <p>Categorie: <span *ngFor="let categoria of data.evento.categorias">{{categoria.nome}}, </span></p>
+        <p>Timestamp: {{data.dataSegnalazione}}</p>
+
+        <p>Zona: {{data.zona.nome}}</p>
+        <p>Descrizione: {{data.descrizioni}}</p>
+        <p>Anonima: {{data.iduser == undefined}}</p>
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Chiudi</button>
+    </mat-dialog-actions>
+</div>
+
+
+<div *ngIf="data === undefined">
+    <h2 mat-dialog-title>Oops...</h2>
+    <mat-dialog-content>Non è stato trovato alcun evento con l'ID inserito.</mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Chiudi</button>
+    </mat-dialog-actions>
+</div>
+
+
