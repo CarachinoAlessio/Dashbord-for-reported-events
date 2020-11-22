@@ -290,5 +290,14 @@ export class ReportsService {
         return feedbackPiuVicino;
     }
 
+    //SEARCH ----------------------------------------------------------------------------------------------------------
 
+    getById(Id: string): FeedbackUtenti{
+        for (let i = 0; i < this.feedbackUtenti.length; i++){
+            if (this.feedbackUtenti[i].idsegnalazione === Id){
+                return this.feedbackUtenti[i];
+            }
+        }
+        return undefined;
+    }
 }

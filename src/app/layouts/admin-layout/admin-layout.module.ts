@@ -18,6 +18,8 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
     imports: [
@@ -37,6 +39,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
         MatExpansionModule,
         MatFormFieldModule,
         MatDatepickerModule,
+        MatTableModule,
+        MatPaginatorModule,
     ],
     declarations: [
         DashboardComponent,
