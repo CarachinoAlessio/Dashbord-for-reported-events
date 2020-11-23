@@ -11,14 +11,39 @@ import {RisultatoRicerca} from "../search/search.component";
 })
 export class ReportsService {
     private feedbackUtenti: FeedbackUtenti[] = [];
+    private lastReport: string;
     @Output() isServiceReady = new EventEmitter<boolean>();
+    @Output() newReport = new EventEmitter<boolean>();
+    private newReportAvailable = false;
     private serviceReady = false;
 
     constructor(private httpClient: HttpClient) {
+        this.newReportDetector();
     }
 
     getServiceReady(): boolean {
         return this.serviceReady;
+    }
+
+    newReportDetector(): void{
+        if (!this.newReportAvailable) {
+            setTimeout(() => {
+                if (this.serviceReady) {
+                    this.httpClient.get<any>("assets/Reports.json").subscribe(
+                        json => {
+                            console.log('ci provo');
+                            this.feedbackUtenti = json;
+                            this.lastReport = this.feedbackUtenti[this.feedbackUtenti.length - 1].dataSegnalazione;
+                            if (this.feedbackUtenti[this.feedbackUtenti.length - 1].dataSegnalazione !== this.lastReport) {
+                                this.newReport.emit(true);
+                                this.newReportAvailable = true;
+                            }
+                            this.newReportDetector();
+                        }
+                    );
+                }
+            }, 5000);
+        }
     }
 
     //DASHBOARD -----------------------------------------------------------------------------------------------------
@@ -26,6 +51,7 @@ export class ReportsService {
         this.httpClient.get<any>("assets/Reports.json").subscribe(
             json => {
                 this.feedbackUtenti = json;
+                this.lastReport = this.feedbackUtenti[this.feedbackUtenti.length - 1].dataSegnalazione;
                 this.serviceReady = true;
                 this.isServiceReady.emit(true);
             }
@@ -68,27 +94,27 @@ export class ReportsService {
     }
 
 
-    getOverallbest(): { overallBest: number, date: string }{
+    getOverallbest(): { overallBest: number, date: string } {
         let overallBest: number;
         let date: string[] = [];
         this.feedbackUtenti.forEach(
-            (feedback) => date.push(feedback.dataSegnalazione.toString().split(' ')[0] ));
+            (feedback) => date.push(feedback.dataSegnalazione.toString().split(' ')[0]));
         date.sort();
         let j = 1;
         overallBest = 1;
         let mostFrequentDate = date[0];
-        for (let i = 0; i < date.length ; i++){
-            if (date[i] !== date[i+1]){
-                if (overallBest < j){
+        for (let i = 0; i < date.length; i++) {
+            if (date[i] !== date[i + 1]) {
+                if (overallBest < j) {
                     overallBest = j;
                     mostFrequentDate = date[i];
                 }
                 j = 1;
-            }else{
+            } else {
                 j++;
             }
         }
-        return { overallBest: overallBest, date: mostFrequentDate};
+        return {overallBest: overallBest, date: mostFrequentDate};
     }
 
     getLastUpdateInfo(): string {
@@ -110,18 +136,25 @@ export class ReportsService {
     }
 
 
-    getSegnalazioniUtentiSeries(): number[][]{
+    getSegnalazioniUtentiSeries(): number[][] {
         let serieAnonimi: Array<number> = [];
         let serieRegistrati: Array<number> = [];
 
         if (this.feedbackUtenti.length == 0) {
-            serieAnonimi[0] = 1; serieRegistrati[0] = 2;
-            serieAnonimi[1] = 1; serieRegistrati[1] = 2;
-            serieAnonimi[2] = 1; serieRegistrati[2] = 2;
-            serieAnonimi[3] = 1; serieRegistrati[3] = 2;
-            serieAnonimi[4] = 1; serieRegistrati[4] = 2;
-            serieAnonimi[5] = 1; serieRegistrati[5] = 2;
-            serieAnonimi[6] = 1; serieRegistrati[6] = 2;
+            serieAnonimi[0] = 1;
+            serieRegistrati[0] = 2;
+            serieAnonimi[1] = 1;
+            serieRegistrati[1] = 2;
+            serieAnonimi[2] = 1;
+            serieRegistrati[2] = 2;
+            serieAnonimi[3] = 1;
+            serieRegistrati[3] = 2;
+            serieAnonimi[4] = 1;
+            serieRegistrati[4] = 2;
+            serieAnonimi[5] = 1;
+            serieRegistrati[5] = 2;
+            serieAnonimi[6] = 1;
+            serieRegistrati[6] = 2;
             return [serieRegistrati, serieAnonimi];
         } else {
 
@@ -140,9 +173,9 @@ export class ReportsService {
                     let diff = (today - new Date(dataSegnalazione).getTime());
                     let diffDays = Math.ceil(diff / (1000 * 3600 * 24)) - 1;
                     if (diffDays < 7) {
-                        if ( feedbackUtente.iduser == undefined ){
+                        if (feedbackUtente.iduser == undefined) {
                             serieAnonimi[6 - diffDays]++;
-                        } else{
+                        } else {
                             serieRegistrati[6 - diffDays]++;
                         }
                     }
@@ -152,11 +185,11 @@ export class ReportsService {
         }
     }
 
-    getTotalReports(): number{
+    getTotalReports(): number {
         return this.feedbackUtenti.length;
     }
 
-    getSerieGiorniSettimana(): number[]{
+    getSerieGiorniSettimana(): number[] {
         let giorni = [0, 0, 0, 0, 0, 0, 0];
         this.feedbackUtenti.forEach(
             (feedback) => {
@@ -280,7 +313,7 @@ export class ReportsService {
         this.feedbackUtenti.forEach(
             (feedback) => {
                 let currentDist = this.getDistance(latCoords, lonCoords, feedback.gpx.lat, feedback.gpx.longt);
-                if (currentDist < dist){
+                if (currentDist < dist) {
                     feedbackPiuVicino = feedback;
                     dist = currentDist;
                 }
@@ -293,9 +326,9 @@ export class ReportsService {
 
     //SEARCH ----------------------------------------------------------------------------------------------------------
 
-    getById(Id: string): FeedbackUtenti{
-        for (let i = 0; i < this.feedbackUtenti.length; i++){
-            if (this.feedbackUtenti[i].idsegnalazione === Id){
+    getById(Id: string): FeedbackUtenti {
+        for (let i = 0; i < this.feedbackUtenti.length; i++) {
+            if (this.feedbackUtenti[i].idsegnalazione === Id) {
                 return this.feedbackUtenti[i];
             }
         }
@@ -332,24 +365,88 @@ export class ReportsService {
         }
         return [''];
     }*/
-    getRisultatiRicercaByZone(zone: string, startDate: string, endDate: string): RisultatoRicerca[]{
+    getRisultatiRicercaByZone(zone: string, startDate: string, endDate: string): RisultatoRicerca[] {
         let risultatoRicerca = new Array<RisultatoRicerca>();
         this.feedbackUtenti.forEach(
             (feedback) => {
+                let categoriaRis = '';
+                feedback.evento.categorias.forEach(
+                    (categoria) => categoriaRis = categoriaRis.concat(categoria.nome + ', ')
+                );
+                categoriaRis = categoriaRis.slice(0, categoriaRis.length - 2);
                 const risultato: RisultatoRicerca = {
-                    categorie: feedback.evento.categorias.toString(),
+                    categorie: categoriaRis,
                     data: feedback.dataSegnalazione,
                     titolo: feedback.evento.titolo,
                     zona: feedback.zona.nome,
                     idsegnalazione: feedback.idsegnalazione
                 };
-                risultatoRicerca.push(risultato);
+                let zoneOK: boolean;
+                let startDateOK: boolean;
+                let endDateOK: boolean;
+
+                if ((zone == undefined || risultato.zona === zone)) {
+                    zoneOK = true;
+                }
+
+
+                if (startDate == undefined && endDate == undefined) {
+                    endDateOK = true;
+                    startDateOK = true;
+                } else if (startDate !== undefined && endDate == undefined) {
+                    endDateOK = true;
+                    const startDateConverted = new Date(startDate);
+                    const startDateYear = startDateConverted.getFullYear().toString();
+                    const startDateMonth = Number(startDateConverted.getMonth() + 1).toString();
+                    const startDateDay = startDateConverted.getDate().toString();
+                    const startDateDef = startDateYear.concat('-' + startDateMonth).concat('-' + startDateDay);
+
+                    const date1Temp = new Date(startDateDef);
+                    const date1 = new Date(date1Temp.getFullYear(), date1Temp.getMonth(), date1Temp.getDate());
+                    const date2Temp = new Date(risultato.data.split(' ')[0]);
+                    const date2 = new Date(date2Temp.getFullYear(), date2Temp.getMonth(), date2Temp.getDate());
+                    if (date1.getTime() == date2.getTime()) {
+                        startDateOK = true;
+                    }
+                } else {
+                    const startDateConverted = new Date(startDate);
+                    const startDateYear = startDateConverted.getFullYear().toString();
+                    const startDateMonth = Number(startDateConverted.getMonth() + 1).toString();
+                    const startDateDay = startDateConverted.getDate().toString();
+                    const startDateDef = startDateYear.concat('-' + startDateMonth).concat('-' + startDateDay);
+
+
+                    const endDateConverted = new Date(endDate);
+                    const endDateYear = endDateConverted.getFullYear().toString();
+                    const endDateMonth = Number(endDateConverted.getMonth() + 1).toString();
+                    const endDateDay = endDateConverted.getDate().toString();
+                    const endDateDef = endDateYear.concat('-' + endDateMonth).concat('-' + endDateDay);
+
+
+                    const date1Temp = new Date(startDateDef);
+                    const date1 = new Date(date1Temp.getFullYear(), date1Temp.getMonth(), date1Temp.getDate());
+                    const date2Temp = new Date(risultato.data.split(' ')[0]);
+                    const date2 = new Date(date2Temp.getFullYear(), date2Temp.getMonth(), date2Temp.getDate());
+                    const date3Temp = new Date(endDateDef);
+                    const date3 = new Date(date3Temp.getFullYear(), date3Temp.getMonth(), date3Temp.getDate());
+
+                    if (date1.getTime() <= date2.getTime()) {
+                        startDateOK = true;
+                    }
+                    if (date2.getTime() <= date3.getTime()) {
+                        endDateOK = true;
+                    }
+                }
+
+                if (zoneOK && startDateOK && endDateOK) {
+                    risultatoRicerca.push(risultato);
+                }
             }
         );
         return risultatoRicerca;
     }
 
-    getZones(): string[]{
+    getZones(): string[] {
         let res = new Array<string>();
         this.feedbackUtenti.forEach(
             (feedback) => res.push(feedback.zona.nome)

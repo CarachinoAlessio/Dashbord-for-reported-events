@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
+import {ReportsService} from "../../services/reports.service";
 
 @Component({
   selector: 'app-navbar',
@@ -16,12 +17,14 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
     newReportAvailable = false;
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    constructor(location: Location, private element: ElementRef, private router: Router, private reportsService: ReportsService) {
       this.location = location;
           this.sidebarVisible = false;
     }
 
     ngOnInit(){
+      this.reportsService.newReport.subscribe(
+          () => this.newReportAvailable = true );
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
@@ -53,8 +56,6 @@ export class NavbarComponent implements OnInit {
         body.classList.remove('nav-open');
     };
     sidebarToggle() {
-        // const toggleButton = this.toggleButton;
-        // const body = document.getElementsByTagName('body')[0];
         var $toggle = document.getElementsByClassName('navbar-toggler')[0];
 
         if (this.sidebarVisible === false) {
@@ -124,6 +125,7 @@ export class NavbarComponent implements OnInit {
     }
 
     newReport(): void{
-        alert('Non è ancora possibile...');
+        this.router.navigate(['/dashboard'])
+            .then(() => window.location.reload());
     }
 }

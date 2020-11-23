@@ -20,8 +20,11 @@
                         <i class="material-icons" style="color: rgb(158, 166, 178); font-size: 32px">notifications</i>
                         <span *ngIf="this.newReportAvailable" class="notification"></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <div *ngIf="this.newReportAvailable" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" role="button" (click)="newReport()">E' stata ricevuta una nuova segnalazione, Ricarica per vedere i cambiamenti.</a>
+                    </div>
+                    <div *ngIf="!this.newReportAvailable" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" role="button">Non ci sono segnalazioni più recenti.</a>
                     </div>
                 </li>
             </ul>

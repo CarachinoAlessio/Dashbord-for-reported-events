@@ -2,7 +2,6 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import * as Chartist from 'chartist';
 import {ReportsService} from "../services/reports.service";
 import {MatAccordion} from "@angular/material/expansion";
-import {resolveAny} from "dns";
 
 class Variazione {
     constructor(
