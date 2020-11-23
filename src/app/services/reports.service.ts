@@ -334,8 +334,18 @@ export class ReportsService {
     }*/
     getRisultatiRicercaByZone(zone: string, startDate: string, endDate: string): RisultatoRicerca[]{
         let risultatoRicerca = new Array<RisultatoRicerca>();
-        let i: RisultatoRicerca = {categorie: "", data: "", zona: "", titolo: 'ciao'}
-        risultatoRicerca.push(i);
+        this.feedbackUtenti.forEach(
+            (feedback) => {
+                const risultato: RisultatoRicerca = {
+                    categorie: feedback.evento.categorias.toString(),
+                    data: feedback.dataSegnalazione,
+                    titolo: feedback.evento.titolo,
+                    zona: feedback.zona.nome,
+                    idsegnalazione: feedback.idsegnalazione
+                };
+                risultatoRicerca.push(risultato);
+            }
+        );
         return risultatoRicerca;
     }
 

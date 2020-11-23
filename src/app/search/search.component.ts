@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatDialog} from "@angular/material/dialog";
@@ -6,6 +6,10 @@ import {FormControl} from "@angular/forms";
 import {FeedbackUtenti} from "../classes/FeedbackUtenti/FeedbackUtenti";
 import {ReportsService} from "../services/reports.service";
 import {DialogComponent} from "./dialog/dialog.component";
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import htmlToPdfmake from 'html-to-pdfmake';
 
 export interface RisultatoRicerca {
   idsegnalazione?: string,
@@ -35,6 +39,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   endDateControl = new FormControl();
   risultatiRicerca: RisultatoRicerca[] = [];
   zone: string[] = [];
+  @ViewChild('content') content: ElementRef;
 
 
   constructor(private reportsService: ReportsService, public dialog: MatDialog) {
@@ -66,7 +71,28 @@ export class SearchComponent implements OnInit, AfterViewInit {
     }
     this.risultatiRicerca = this.reportsService.getRisultatiRicercaByZone(this.zoneSelected.value, this.startDateControl.value, this.endDateControl.value);
     this.dataSource = new MatTableDataSource<RisultatoRicerca>(this.risultatiRicerca);
+    this.ngAfterViewInit();
     this.hasSearched = true;
     this.isResultVoid = false;
+  }
+
+  openDialog(idsegnalazione: string) {
+    const feedback: FeedbackUtenti = this.reportsService.getById(idsegnalazione);
+    this.dialog.open(DialogComponent, {data: feedback});
+  }
+
+  savePdf(): void{
+
+    let rows =  [];
+    rows.push(['Nr.', 'Name', 'Beschreibung', 'Preis', 'Anzahl', 'MwSt(%)']);
+    let x = rows.concat(this.risultatiRicerca);
+
+    const documentDefinition = { content: {
+        table: {
+          widths: ['*', '*', '*', '*', '*', '*'],
+          body: x
+        }
+      } };
+    pdfMake.createPdf(documentDefinition).open();
   }
 }
