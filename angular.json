@@ -41,7 +41,8 @@
               "@babel/runtime/regenerator",
               "rxjs/add/operator/filter",
               "jquery",
-              "chartist"
+              "chartist",
+              "pdfmake/build/pdfmake"
             ]
           },
           "configurations": {

@@ -31,7 +31,7 @@ export class ReportsService {
                 if (this.serviceReady) {
                     this.httpClient.get<any>("assets/Reports.json").subscribe(
                         json => {
-                            console.log('ci provo');
+                            console.log('Non ci sono nuove segnalazioni.');
                             this.feedbackUtenti = json;
                             this.lastReport = this.feedbackUtenti[this.feedbackUtenti.length - 1].dataSegnalazione;
                             if (this.feedbackUtenti[this.feedbackUtenti.length - 1].dataSegnalazione !== this.lastReport) {
@@ -75,7 +75,7 @@ export class ReportsService {
             // non posso cambiare le date ogni giorno nel JSON... let today = new Date().getTime();
             let todaySt = 'Mon Nov 09 2020 19:32:31 GMT+0100';
             let today = new Date(todaySt).getTime();
-            let countPerDays: number[] = [4, 20, 13, 60, 22, 33, 40];
+            let countPerDays: number[] = [0, 0, 0, 0, 0, 0, 0];
             // DEVE partire da 0 MA per mostrare meglio il grafico lo faccio particolare
             // let countPerDays: number[] = [ 0, 0, 0, 0, 0, 0, 0 ];
 

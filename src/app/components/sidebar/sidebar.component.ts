@@ -5,12 +5,11 @@ declare interface RouteInfo {
     path: string;
     title: string;
     icon: string;
-    class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Riepilogo',  icon: 'view_compact', class: '' },
-    { path: '/map', title: 'Mappa',  icon: 'location_on', class: '' },
-    { path: '/search', title: 'Cerca', icon: 'search', class: ''}
+    { path: '/dashboard', title: 'Riepilogo',  icon: 'view_compact' },
+    { path: '/map',       title: 'Mappa',      icon: 'location_on'},
+    { path: '/search',    title: 'Cerca',      icon: 'search'}
 ];
 
 @Component({

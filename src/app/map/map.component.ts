@@ -16,7 +16,6 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {MatSelect} from "@angular/material/select";
 import {MatOption, MatOptionSelectionChange} from "@angular/material/core";
 import {Overlay} from "ol";
-import {toStringHDMS} from "ol/coordinate";
 import {toLonLat, fromLonLat} from "ol/proj";
 import {FeedbackUtenti} from "../classes/FeedbackUtenti/FeedbackUtenti";
 
@@ -86,7 +85,7 @@ export class MapComponent implements OnInit {
     //MAPPA ---------------------------------------------------------------------------
 
 
-    initializeMap(gravity: string[], reportCategory: string[]) {
+    initializeMap(gravity: string[], reportCategory: string[]): void{
         this.toInitialize = this.reportsService.getToInitialize(gravity, reportCategory);
         const container = document.getElementById('popup');
         const content = document.getElementById('popup-content');
@@ -214,7 +213,7 @@ export class MapComponent implements OnInit {
         this.map.getView().setCenter(fromLonLat(center));
     }
 
-    //Sarebbe 'onSubmit()' del Form
+    //Sarebbe 'onSubmit()' del FORM
     updateMap(): void {
         let gravity = this.gravityControl.value;
         let reportCategory = this.categoryControl.value;
@@ -281,7 +280,7 @@ export class MapComponent implements OnInit {
     }
 
 
-    categorySelChanged($event: MatOptionSelectionChange): void {
+    categorySelChanged($event: MatOptionSelectionChange): void{
         {
             if ($event.isUserInput) {
                 if (this.allCategorySelected) {
