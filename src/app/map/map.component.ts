@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ReportsService} from "../services/reports.service";
 import Map from 'ol/Map';
 import Tile from 'ol/layer/Tile';
@@ -18,6 +18,8 @@ import {MatOption, MatOptionSelectionChange} from "@angular/material/core";
 import {Overlay} from "ol";
 import {toLonLat, fromLonLat} from "ol/proj";
 import {FeedbackUtenti} from "../classes/FeedbackUtenti/FeedbackUtenti";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogComponent} from "../search/dialog/dialog.component";
 
 
 function getDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
@@ -49,6 +51,7 @@ export class MapComponent implements OnInit {
     private vectorLayer: VectorLayer;
     private toInitialize: ToInitialize[];
     private isMapInitialized = false;
+    idSegnalazionePopup: string;
 
     //FORM ----------------------------------------------------------------------------
     allGravitySelected = true;
@@ -61,7 +64,7 @@ export class MapComponent implements OnInit {
     @ViewChild('categorySelect') categorySelect: MatSelect;
 
 
-    constructor(private reportsService: ReportsService, fb: FormBuilder) {
+    constructor(private reportsService: ReportsService, fb: FormBuilder, public dialog: MatDialog) {
         this.categories = this.reportsService.getCategories();
         this.options = fb.group({
             gravity: this.gravityControl,
@@ -90,6 +93,7 @@ export class MapComponent implements OnInit {
         const container = document.getElementById('popup');
         const content = document.getElementById('popup-content');
         const closer = document.getElementById('popup-closer');
+        const extender = document.getElementById('popup-extender');
 
 
         const overlay = new Overlay({
@@ -179,6 +183,16 @@ export class MapComponent implements OnInit {
             closer.blur();
             return false;
         };
+
+        extender.addEventListener('click', (() => {
+            const feedback: FeedbackUtenti = this.reportsService.getById(this.idSegnalazionePopup);
+            this.dialog.open(DialogComponent, {data: feedback});
+        }));
+        extender.onclick = function (){
+            overlay.setPosition(undefined);
+            extender.blur();
+            return false;
+        }
     }
 
     private mapClicked(e: any, content: HTMLElement, overlay: Overlay, toInitialize: ToInitialize[]): void {
@@ -191,6 +205,7 @@ export class MapComponent implements OnInit {
                         if (getDistance(segnalazione.gpx.lat, segnalazione.gpx.longt, toLonLat(coordinate)[1], toLonLat(coordinate)[0]) < 75) {
                             content.innerHTML = '<code>' + segnalazione.evento.titolo +
                                 '</code><p>ID: ' + segnalazione.idsegnalazione + '</p>';
+                            this.idSegnalazionePopup = segnalazione.idsegnalazione;
                             overlay.setPosition(fromLonLat([segnalazione.gpx.longt, segnalazione.gpx.lat]));
                         }
                     }
@@ -198,6 +213,11 @@ export class MapComponent implements OnInit {
             );
         }
     }
+
+    ciao(): any{
+        alert('ciao');
+    }
+
 
 
     localPosition(): void {

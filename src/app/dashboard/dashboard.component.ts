@@ -112,7 +112,7 @@ export class DashboardComponent implements OnInit {
                         tension: 0
                     }),
                     low: 0,
-                    high: max + 10,
+                    high: max + 3,
                     chartPadding: {top: 0, right: 0, bottom: 0, left: 0},
                 }
 
@@ -136,7 +136,7 @@ export class DashboardComponent implements OnInit {
                         tension: 0
                     }),
                     low: 0,
-                    high: Math.max(...utentiSeries[0], ...utentiSeries[1]) + 10,
+                    high: Math.max(...utentiSeries[0], ...utentiSeries[1]) + 3,
                     chartPadding: {top: 0, right: 0, bottom: 0, left: 0}
                 }
 
@@ -156,7 +156,7 @@ export class DashboardComponent implements OnInit {
                         showGrid: true,
                     },
                     low: 0,
-                    high: Math.max(...serieGiorniSettimana) + 5,
+                    high: Math.max(...serieGiorniSettimana) + 1,
                 };
 
                 let websiteViewsChart = new Chartist.Bar('#giorniSettimanali', this.giorniSettimanaGrafico, opzioniGiorniSettimanali);

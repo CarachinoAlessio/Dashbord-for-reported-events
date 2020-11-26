@@ -72,6 +72,15 @@
     right: 8px;
 }
 .ol-popup-closer:after {
-    content: "✖";
+    content: "chiudi";
+}
+.ol-popup-extender {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 60px;
+}
+.ol-popup-extender:after {
+    content: "espandi";
 }
 

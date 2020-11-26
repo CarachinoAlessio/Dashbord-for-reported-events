@@ -9,7 +9,7 @@
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
-            "titolo": "Green City",
+            "titolo": "Titolo 1",
             "descrizione": null,
             "data_attivazione": null,
             "categorias": [
@@ -48,7 +48,7 @@
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
-            "titolo": "Green City",
+            "titolo": "Titolo 2",
             "descrizione": null,
             "data_attivazione": null,
             "categorias": [
@@ -87,7 +87,7 @@
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
-            "titolo": "Green City",
+            "titolo": "Titolo 3",
             "descrizione": null,
             "data_attivazione": null,
             "categorias": [
@@ -118,7 +118,7 @@
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
-            "titolo": "Green City",
+            "titolo": "Titolo 4",
             "descrizione": null,
             "data_attivazione": null,
             "categorias": [
@@ -155,7 +155,7 @@
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
-            "titolo": "Green City",
+            "titolo": "Titolo 5",
             "descrizione": null,
             "data_attivazione": null,
             "categorias": [
@@ -194,7 +194,7 @@
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
-            "titolo": "Green City",
+            "titolo": "Titolo 6",
             "descrizione": null,
             "data_attivazione": null,
             "categorias": [
@@ -229,7 +229,7 @@
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
-            "titolo": "Green City",
+            "titolo": "Titolo 7",
             "descrizione": null,
             "data_attivazione": null,
             "categorias": [
@@ -260,7 +260,7 @@
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
-            "titolo": "Green City",
+            "titolo": "Titolo 8",
             "descrizione": null,
             "data_attivazione": null,
             "categorias": [
@@ -299,7 +299,7 @@
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
-            "titolo": "Green City",
+            "titolo": "Titolo 9",
             "descrizione": null,
             "data_attivazione": null,
             "categorias": [
@@ -336,7 +336,7 @@
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
-            "titolo": "Green City",
+            "titolo": "Titolo 10",
             "descrizione": null,
             "data_attivazione": null,
             "categorias": [
@@ -348,7 +348,7 @@
             "immagineUrl": null,
             "request_login": 0
         },
-        "iduser": null,
+        "iduser": 2,
         "immagini": [
             "https://storage.googleapis.com/safecity-eed9a.appspot.com/SafeCity/Immagini/Segnalazioni/41208717-8f7c-47cc-acb5-0e0959179bebblob?GoogleAccessId=firebase-adminsdk-xgplv@safecity-eed9a.iam.gserviceaccount.com&Expires=1604332221&Signature=Ucb7t3mJM0J7qZjLmmZafnpk44QjK92%2F9xnPQB0eqoy4SCM6XHmBq3H8dR7U2rzzG5v0J6nSTJn2pFW5%2BBcVfO5AHPsay7FLt%2FEMhteZ9RQNgoKWApa8BOFSiIS6Jkd%2F5UhkM3xFvlNQ0qqN8I72kitJY2AbgAyNCYkap20SU%2B9arpz9wc6aeffKaf6iG3QW7VLJfKKVQzXFp6D8C6co9VxXFUmZE2LdjnFpWpwoqWxi0I9OMBTuglnMIzAuUDhz%2BzjLtB%2BZMwhOzTICDJUihr3eNWDQPR6Edxzr90kEraUAuaeBYRRifXy27ic7OtwArtcO59BD5XEGUHjHlE%2BAFA%3D%3D"
         ],
@@ -369,7 +369,7 @@
         },
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
-            "titolo": "Green City",
+            "titolo": "Titolo 11",
             "descrizione": null,
             "data_attivazione": null,
             "categorias": [
@@ -381,7 +381,7 @@
             "immagineUrl": null,
             "request_login": 0
         },
-        "iduser": null,
+        "iduser": 1,
         "immagini": [],
         "descrizioni": null,
         "zona": {
