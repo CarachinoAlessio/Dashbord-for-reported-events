@@ -14,10 +14,10 @@ export const ROUTES: RouteInfo[] = [
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  templateUrl: './sidebar-tesi.component.html',
+  styleUrls: ['./sidebar-tesi.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarTesiComponent implements OnInit {
   menuItems: any[];
 
   constructor() { }

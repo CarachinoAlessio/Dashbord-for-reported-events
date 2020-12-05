@@ -1,15 +1,15 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { ROUTES } from '../sidebar/sidebar.component';
+import { ROUTES } from '../sidebar-tesi/sidebar-tesi.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
-import {ReportsService} from "../../services/reports.service";
+import {ReportsService} from '../../services/reports.service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-navbar-tesi',
+  templateUrl: './navbar-tesi.component.html',
+  styleUrls: ['./navbar-tesi.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarTesiComponent implements OnInit {
     private listTitles: any[];
     location: Location;
     mobile_menu_visible: any = 0;

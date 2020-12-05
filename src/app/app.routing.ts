@@ -4,15 +4,15 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import {RouteGuardService} from "./route-guard.service";
-import {DashboardComponent} from "./dashboard/dashboard.component";
-import {MapComponent} from "./map/map.component";
-import {SearchComponent} from "./search/search.component";
+import {DashboardTesiComponent} from "./dashboard-tesi/dashboard-tesi.component";
+import {MapTesiComponent} from "./map-tesi/map-tesi.component";
+import {SearchTesiComponent} from './search-tesi/search-tesi.component';
 
 const routes: Routes = [
   { path: '',               redirectTo: 'dashboard',    pathMatch: 'full' },
-  { path: 'dashboard',      component: DashboardComponent },
-  { path: 'map',            component: MapComponent,    canActivate: [ RouteGuardService ]},
-  { path: 'search',         component: SearchComponent, canActivate: [ RouteGuardService ]},
+  { path: 'dashboard',      component: DashboardTesiComponent },
+  { path: 'map',            component: MapTesiComponent,    canActivate: [ RouteGuardService ]},
+  { path: 'search',         component: SearchTesiComponent, canActivate: [ RouteGuardService ]},
   ];
 
 @NgModule({

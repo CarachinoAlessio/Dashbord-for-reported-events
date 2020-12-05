@@ -25,10 +25,10 @@ const risultatoRicerca: RisultatoRicerca[] = [];
 
 @Component({
     selector: 'app-event',
-    templateUrl: './search.component.html',
-    styleUrls: ['./search.component.css']
+    templateUrl: './search-tesi.component.html',
+    styleUrls: ['./search-tesi.component.css']
 })
-export class SearchComponent implements OnInit, AfterViewInit {
+export class SearchTesiComponent implements OnInit, AfterViewInit {
     displayedColumns: string[] = ['titolo', 'data', 'categorie', 'zona'];
     dataSource = new MatTableDataSource<RisultatoRicerca>(risultatoRicerca);
     hasSearched = false;

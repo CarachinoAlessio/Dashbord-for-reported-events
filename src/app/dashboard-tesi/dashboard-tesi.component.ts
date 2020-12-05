@@ -14,12 +14,12 @@ class Variazione {
 
 @Component({
     selector: 'app-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.css']
+    templateUrl: './dashboard-tesi.component.html',
+    styleUrls: ['./dashboard-tesi.component.css']
 })
 
 
-export class DashboardComponent implements OnInit {
+export class DashboardTesiComponent implements OnInit {
     @ViewChild(MatAccordion) accordion: MatAccordion;
     panelOpenState = false;
     private segnalazioniSettimanaChart: { labels: string[], series: number[][] };

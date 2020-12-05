@@ -3,7 +3,7 @@ import {FeedbackUtenti} from "../classes/FeedbackUtenti/FeedbackUtenti";
 import {HttpClient} from "@angular/common/http";
 import {ToInitialize} from "../classes/ToInitialize";
 import {Coordinate} from "ol/coordinate";
-import {RisultatoRicerca} from "../search/search.component";
+import {RisultatoRicerca} from "../search-tesi/search-tesi.component";
 
 
 @Injectable({

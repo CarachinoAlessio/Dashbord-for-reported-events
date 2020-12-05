@@ -14,7 +14,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule, MatRippleModule} from "@angular/material/core";
-import { DialogComponent } from './search/dialog/dialog.component';
+import { DialogComponent } from './search-tesi/dialog/dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
@@ -24,9 +24,9 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
-import {DashboardComponent} from "./dashboard/dashboard.component";
-import {MapComponent} from "./map/map.component";
-import {SearchComponent} from "./search/search.component";
+import {DashboardTesiComponent} from "./dashboard-tesi/dashboard-tesi.component";
+import {MapTesiComponent} from "./map-tesi/map-tesi.component";
+import {SearchTesiComponent} from "./search-tesi/search-tesi.component";
 
 @NgModule({
   imports: [
@@ -65,9 +65,9 @@ import {SearchComponent} from "./search/search.component";
   declarations: [
     AppComponent,
     DialogComponent,
-    DashboardComponent,
-    MapComponent,
-    SearchComponent,
+    DashboardTesiComponent,
+    MapTesiComponent,
+    SearchTesiComponent,
   ],
   providers: [ReportsService, RouteGuardService, HttpClientModule],
   bootstrap: [AppComponent]

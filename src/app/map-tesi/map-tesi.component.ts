@@ -19,7 +19,7 @@ import {Overlay} from "ol";
 import {toLonLat, fromLonLat} from "ol/proj";
 import {FeedbackUtenti} from "../classes/FeedbackUtenti/FeedbackUtenti";
 import {MatDialog} from "@angular/material/dialog";
-import {DialogComponent} from "../search/dialog/dialog.component";
+import {DialogComponent} from "../search-tesi/dialog/dialog.component";
 
 
 function getDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
@@ -37,12 +37,12 @@ function getDistance(lat1: number, lon1: number, lat2: number, lon2: number): nu
 
 @Component({
     selector: 'app-maps',
-    templateUrl: './map.component.html',
-    styleUrls: ['./map.component.css']
+    templateUrl: './map-tesi.component.html',
+    styleUrls: ['./map-tesi.component.css']
 })
 
 
-export class MapComponent implements OnInit {
+export class MapTesiComponent implements OnInit {
 
     //MAPPA ---------------------------------------------------------------------------
     private map: Map;
