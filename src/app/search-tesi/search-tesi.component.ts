@@ -74,7 +74,7 @@ export class SearchTesiComponent implements OnInit, AfterViewInit {
         this.dataSource = new MatTableDataSource<RisultatoRicerca>(this.risultatiRicerca);
         this.ngAfterViewInit();
         this.hasSearched = true;
-        this.isResultVoid = false;
+        this.isResultVoid = this.risultatiRicerca.length == 0;
     }
 
     openDialog(idsegnalazione: string) {

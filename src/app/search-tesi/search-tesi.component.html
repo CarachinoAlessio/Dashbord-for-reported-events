@@ -73,7 +73,7 @@
             <mat-card [hidden]="!hasSearched && tabSelected.value == 0">
                 <mat-card-header>
                     <mat-card-title>Risultati</mat-card-title>
-                    <mat-card-subtitle>Sono stati trovati TODO risultati</mat-card-subtitle>
+                    <mat-card-subtitle>Sono stati trovati {{risultatiRicerca.length}} risultati</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content *ngIf="!this.isResultVoid">
                     <div class="mat-elevation-z8" id="content" #content>

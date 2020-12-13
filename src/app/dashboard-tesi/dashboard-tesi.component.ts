@@ -13,7 +13,7 @@ class Variazione {
 }
 
 @Component({
-    selector: 'app-dashboard',
+    selector: 'app-dashboard-tesi',
     templateUrl: './dashboard-tesi.component.html',
     styleUrls: ['./dashboard-tesi.component.css']
 })
