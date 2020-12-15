@@ -256,7 +256,6 @@ export class ReportsService {
                     gravityOK = true;
                 }
 
-
                 //FILTRO CATEGORIA ----------------------------------------------------------
                 categoryOK = false;
                 categories.forEach(
