@@ -214,10 +214,6 @@ export class MapTesiComponent implements OnInit {
         }
     }
 
-    ciao(): any{
-        alert('ciao');
-    }
-
 
 
     localPosition(): void {

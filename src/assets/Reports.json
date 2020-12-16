@@ -370,7 +370,7 @@
         "evento": {
             "idevento": "40280381755b07e101755b0cd7610000",
             "titolo": "Titolo 11",
-            "descrizione": null,
+            "descrizione": "Incidente stradale.",
             "data_attivazione": null,
             "categorias": [
                 {
